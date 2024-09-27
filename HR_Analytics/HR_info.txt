@@ -1,0 +1,39 @@
+HR_info
+
+EmpID : 근로자 고유번호
+Age : 근로자 나이
+AgeGroup : 근로자 연령대
+Attrition: 직원의 이직 여부
+BusinessTravel: 직원의 출장 빈도
+DailyRate: 직원의 일일 급여
+Department: 직원이 속한 부서
+DistanceFromHome: 직원의 집으로부터 회사까지의 거리
+Education: 직원의 학력 수준 (1: Below College, 2: College, 3: Bachelor, 4: Master, 5: Doctor)
+EducationField: 직원의 전공 분야
+EmployeeCount: 직원 수 (모든 값이 1로 동일)
+EmployeeNumber: 직원의 고유 번호
+EnvironmentSatisfaction: 직원의 업무 환경 만족도 (1: Low, 2: Medium, 3: High, 4: Very High)
+Gender: 직원의 성별 (Male, Female)
+HourlyRate: 직원의 시간당 급여
+JobInvolvement: 직원의 직무 참여도 (1: Low, 2: Medium, 3: High, 4: Very High)
+JobLevel: 직원의 직급
+JobRole: 직원의 직무
+JobSatisfaction: 직원의 직무 만족도 (1: Low, 2: Medium, 3: High, 4: Very High)
+MaritalStatus: 직원의 결혼 여부 (Single, Married, Divorced)
+MonthlyIncome: 직원의 월급
+MonthlyRate: 직원의 월별 급여 총액
+NumCompaniesWorked: 직원이 근무한 회사 수
+Over18: 직원이 18세 이상인지 여부 (모든 값이 Y로 동일)
+OverTime: 직원의 초과 근무 여부 (Yes, No)
+PercentSalaryHike: 직원의 급여 인상 비율
+PerformanceRating: 직원의 성과 평가 등급 (1: Low, 2: Good, 3: Excellent, 4: Outstanding)
+RelationshipSatisfaction: 직원의 동료와의 관계 만족도 (1: Low, 2: Medium, 3: High, 4: Very High)
+StandardHours: 직원의 표준 근무 시간 (모든 값이 80으로 동일)  
+StockOptionLevel: 직원의 주식 옵션 수준 (0, 1, 2, 3)
+TotalWorkingYears: 직원의 총 근무 연수
+TrainingTimesLastYear: 지난해 직원이 받은 교육 횟수
+WorkLifeBalance: 직원의 일-생활 균형 만족도 (1: Bad, 2: Good, 3: Better, 4: Best)
+YearsAtCompany: 직원이 현재 회사에서 근무한 기간
+YearsInCurrentRole: 직원이 현재 역할에서 근무한 기간
+YearsSinceLastPromotion: 직원의 마지막 승진 이후 경과된 기간
+YearsWithCurrManager: 직원이 현재 관리자와 함께 일한 기간

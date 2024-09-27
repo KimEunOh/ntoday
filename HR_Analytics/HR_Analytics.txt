@@ -1,0 +1,64 @@
+주제
+
+1. 이직 예측 모델링
+주제: 특정 변수들이 이직 여부(Attrition)에 어떤 영향을 미치는지 분석하여, 직원이 이직할 가능성을 예측하는 모델을 개발할 수 있습니다.
+분석 가능 변수: Age, DistanceFromHome, JobSatisfaction, MonthlyIncome, OverTime, WorkLifeBalance 등.
+2. 급여와 만족도 간의 상관관계 분석
+주제: 급여 수준과 직원의 직무 만족도(JobSatisfaction), 환경 만족도(EnvironmentSatisfaction), 인간관계 만족도(RelationshipSatisfaction) 간의 상관관계를 분석하여, 급여가 직원의 만족도에 미치는 영향을 확인할 수 있습니다.
+분석 가능 변수: MonthlyIncome, JobSatisfaction, EnvironmentSatisfaction, RelationshipSatisfaction, SalarySlab 등.
+3. 근속 연수와 직무 성과 간의 관계 분석
+주제: 직원의 근속 연수(TotalWorkingYears, YearsAtCompany)와 직무 성과(PerformanceRating) 간의 관계를 분석하여, 근속 연수가 성과에 미치는 영향을 평가할 수 있습니다.
+분석 가능 변수: TotalWorkingYears, YearsAtCompany, PerformanceRating, JobInvolvement, JobLevel 등.
+4. 근무 환경이 이직률에 미치는 영향
+주제: 근무 환경 만족도(EnvironmentSatisfaction)와 이직률(Attrition) 간의 관계를 분석하여, 환경 개선이 이직률을 줄일 수 있는지 평가할 수 있습니다.
+분석 가능 변수: EnvironmentSatisfaction, Attrition, WorkLifeBalance, OverTime 등.
+5. 교육 수준과 직무 만족도 간의 관계
+주제: 직원의 교육 수준(Education)과 직무 만족도(JobSatisfaction) 간의 관계를 분석하여, 교육이 직무 만족도에 미치는 영향을 평가할 수 있습니다.
+분석 가능 변수: Education, EducationField, JobSatisfaction, JobRole 등.
+6. 성과와 급여 인상 간의 관계 분석
+주제: 직원의 성과 평가(PerformanceRating)와 급여 인상 비율(PercentSalaryHike) 간의 관계를 분석하여, 성과가 급여 인상에 어떻게 반영되는지 평가할 수 있습니다.
+분석 가능 변수: PerformanceRating, PercentSalaryHike, MonthlyIncome, SalarySlab 등.
+7. 초과 근무가 직원의 만족도 및 이직률에 미치는 영향
+주제: 초과 근무(OverTime)가 직원의 만족도와 이직률에 미치는 영향을 분석하여, 과도한 근무 시간이 직원 유지에 미치는 영향을 평가할 수 있습니다.
+분석 가능 변수: OverTime, Attrition, JobSatisfaction, WorkLifeBalance 등.
+8. 직원 프로필 기반의 맞춤형 복지 제안
+주제: 직원의 나이, 직급(JobLevel), 근속 연수 등을 기반으로 복지 혜택의 필요성을 분석하여, 직원 맞춤형 복지 제안을 할 수 있습니다.
+분석 가능 변수: Age, JobLevel, TotalWorkingYears, WorkLifeBalance, JobSatisfaction 등.
+이와 같은 주제들은 데이터를 심층적으로 분석하고, 조직의 인사 관리 및 정책 결정에 유용한 인사이트를 도출할 수 있습니다.
+
+
+Key Performance Indicator(KPI)로 사용할 수 있는 지표
+
+1. 이직 예측 모델링
+이직률 (Attrition Rate): 일정 기간 동안 이직한 직원의 비율.
+모델 정확도 (Model Accuracy): 이직 예측 모델의 정확도 (Precision, Recall, F1-Score 등).
+이직률 감소율 (Attrition Reduction Rate): 예측 모델을 사용한 후 이직률이 얼마나 감소했는지.
+2. 급여와 만족도 간의 상관관계 분석
+직무 만족도 지수 (Job Satisfaction Index): 전체 직원의 직무 만족도 평균.
+급여 만족도 상관계수 (Salary Satisfaction Correlation Coefficient): 급여와 만족도 간의 상관계수.
+직원 유지율 (Employee Retention Rate): 특정 급여 구간에서의 직원 유지율.
+3. 근속 연수와 직무 성과 간의 관계 분석
+평균 근속 연수 (Average Tenure): 직원들의 평균 근속 연수.
+성과 점수 (Performance Score): 근속 연수에 따른 성과 평가 평균 점수.
+근속 연수에 따른 승진 비율 (Promotion Rate by Tenure): 근속 연수별 승진 비율.
+4. 근무 환경이 이직률에 미치는 영향
+근무 환경 만족도 (Environment Satisfaction Index): 직원들의 근무 환경에 대한 평균 만족도.
+이직률 (Attrition Rate): 근무 환경이 개선된 후의 이직률.
+직원 참여율 (Employee Engagement Rate): 근무 환경 개선 후 직원 참여도가 얼마나 증가했는지.
+5. 교육 수준과 직무 만족도 간의 관계
+직무 만족도 지수 (Job Satisfaction Index): 교육 수준별 직무 만족도 평균.
+교육 투자 수익률 (ROI on Education Investment): 교육 프로그램이 직무 만족도에 미친 영향을 측정.
+교육 후 성과 향상율 (Performance Improvement Post-Education): 교육 프로그램 수료 후 성과 평가 점수 향상율.
+6. 성과와 급여 인상 간의 관계 분석
+급여 인상율 (Salary Hike Rate): 성과 평가 점수와 비교한 급여 인상율.
+성과 대비 보상 비율 (Performance to Compensation Ratio): 성과 점수와 급여 인상 간의 비율.
+직원 만족도 (Employee Satisfaction Index): 성과에 따른 보상에 대한 직원 만족도.
+7. 초과 근무가 직원의 만족도 및 이직률에 미치는 영향
+초과 근무 시간 비율 (Overtime Hours Ratio): 총 근무 시간 중 초과 근무 시간이 차지하는 비율.
+직무 만족도 (Job Satisfaction Index): 초과 근무를 하는 직원들의 직무 만족도.
+초과 근무 이직률 (Attrition Rate for Overtime Workers): 초과 근무를 하는 직원들의 이직률.
+8. 직원 프로필 기반의 맞춤형 복지 제안
+복지 프로그램 참여율 (Benefits Program Participation Rate): 특정 프로필 그룹에서의 복지 프로그램 참여율.
+복지 만족도 지수 (Benefits Satisfaction Index): 맞춤형 복지 프로그램에 대한 직원 만족도.
+복지 프로그램 ROI (ROI on Benefits Program): 복지 프로그램 도입 후 성과 및 유지율 변화.
+이 KPI들은 각각의 분석 주제를 평가하고, 조직의 목표 달성 여부를 확인하는 데 중요한 역할을 합니다. 분석 결과를 기반으로 한 전략적 결정을 내리는 데 유용하게 사용할 수 있습니다.

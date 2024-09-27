@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경로 시각화</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=6vgi2r621e"></script>
+    <style>
+      #map {
+          width: 100%;
+          height: 80vh;
+      }
+      .info {
+          font-size: 14px;
+          font-weight: bold;
+      }
+      .route-info {
+          margin: 10px 0;
+          cursor: pointer;
+          padding: 5px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+      }
+      .route-info.active {
+          background-color: #f0f0f0;
+      }
+      .marker-label {
+          background-color: white;
+          color: black;
+          border: 2px solid black;
+          padding: 5px;
+          border-radius: 5px;
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 120px;
+      }
+      .marker-label.start {
+          background-color: blue;
+          color: white;
+      }
+      .marker-label.current {
+          background-color: green;
+          color: white;
+      }
+    </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="routes-container"></div>
+  <script>
+      // 지도 초기화
+      const mapOptions = {
+          center: new naver.maps.LatLng(37.5125702, 127.1025625),
+          zoom: 12
+      };
+      const map = new naver.maps.Map('map', mapOptions);
+
+      let routesData = [];
+      let routePolylines = [];
+      let routeMarkers = [];
+      let currentRouteIndex = null;
+
+      // JSON 파일 로드
+      fetch('top_routes.json')
+        .then(response => response.json())
+        .then(data => {
+            console.log("Parsed JSON data:", data);
+            routesData = data;
+
+            const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF'];
+            const routesContainer = document.getElementById('routes-container');
+
+            data.forEach((route, index) => {
+                console.log("Processing route:", route);
+                
+                const color = colors[index % colors.length];
+
+                const path = [];
+                let markerIndex = 1; // 중간 마커에 대해 번호를 매기기 위한 변수
+                routeMarkers[index] = []; // 각 경로별 마커 배열 초기화
+
+                route.coordinates.forEach((point, i) => {
+                    console.log("Coordinate:", point);
+
+                    if (Array.isArray(point.coords) && point.coords.length === 2) {
+                        let lat = parseFloat(point.coords[0]);
+                        let lng = parseFloat(point.coords[1]);
+
+                        if (!isNaN(lat) && lat >= -90 && lat <= 90 && !isNaN(lng) && lng >= -180 && lng <= 180) {
+                            const position = new naver.maps.LatLng(lat, lng);
+                            path.push(position);
+
+                            // 현재위치 처리
+                            if (i === 0 || i === route.coordinates.length - 1) {
+                                routeMarkers[index].push(new naver.maps.Marker({
+                                    position: position,
+                                    map: null, // 초기에는 보이지 않음
+                                    icon: {
+                                        content: `<div class="marker-label current">현재위치</div>`,
+                                        size: new naver.maps.Size(80, 30),
+                                        anchor: new naver.maps.Point(40, 15)
+                                    }
+                                }));
+                            } else if (i > 0 && i < route.coordinates.length - 1) {
+                                // 매장 마커 (중간 좌표에 대해서만)
+                                routeMarkers[index].push(new naver.maps.Marker({
+                                    position: position,
+                                    map: null, // 초기에는 보이지 않음
+                                    icon: {
+                                        content: `<div class="marker-label">${markerIndex++}. ${point.name}</div>`,
+                                        size: new naver.maps.Size(80, 30),
+                                        anchor: new naver.maps.Point(40, 15)
+                                    }
+                                }));
+                            }
+                        } else {
+                            console.warn("Invalid latitude or longitude value:", point.coords);
+                        }
+                    } else {
+                        console.warn("Invalid coordinate format:", point.coords);
+                    }
+                });
+
+                if (path.length > 0) {
+                    const polyline = new naver.maps.Polyline({
+                        map: null, // 초기에는 보이지 않음
+                        path: path,
+                        strokeColor: color,
+                        strokeOpacity: 0.8,
+                        strokeWeight: 4
+                    });
+
+                    routePolylines.push(polyline);
+
+                    const routeDiv = document.createElement('div');
+                    routeDiv.className = 'route-info';
+                    routeDiv.innerHTML = `경로 ${index + 1}: ${route.actual_time}`;
+                    routeDiv.addEventListener('click', () => showRoute(index));
+                    routesContainer.appendChild(routeDiv);
+                } else {
+                    console.warn("No valid coordinates for polyline:", route);
+                }
+            });
+        })
+        .catch(error => console.error('Error loading the JSON file:', error));
+
+      function showRoute(index) {
+          // 현재 선택된 경로를 지운다.
+          routePolylines.forEach(polyline => polyline.setMap(null));
+          routeMarkers.forEach(markersArray => markersArray.forEach(marker => marker.setMap(null)));
+
+          // 클릭한 경로만 지도에 표시
+          const selectedPolyline = routePolylines[index];
+          if (selectedPolyline) {
+              selectedPolyline.setMap(map);
+
+              // 경로의 첫 점으로 중심 이동
+              const firstPoint = selectedPolyline.getPath().getAt(0);
+              if (firstPoint instanceof naver.maps.LatLng) {
+                  map.setCenter(firstPoint);
+                  map.setZoom(14);
+              } else {
+                  console.warn("First point is not a valid LatLng object:", firstPoint);
+              }
+          }
+
+          // 선택된 경로의 마커를 표시
+          if (routeMarkers[index]) {
+              routeMarkers[index].forEach(marker => {
+                  marker.setMap(map);
+              });
+          }
+
+          // 활성화된 경로 스타일 변경
+          const routeInfos = document.querySelectorAll('.route-info');
+          routeInfos.forEach((info, i) => {
+              info.classList.toggle('active', i === index);
+          });
+      }
+  </script>
+</body>
+</html>
